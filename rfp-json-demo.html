@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Messy RFP → Structured JSON</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f6f8fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .panel {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .panel h2 {
+    margin-top: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .rfp {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+  pre {
+    background: #1e1e1e;
+    color: #dcdcdc;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 0.9em;
+  }
+  .key { color: #9cdcfe; }
+  .string { color: #ce9178; }
+  .number { color: #b5cea8; }
+  .boolean { color: #569cd6; }
+  .null { color: #569cd6; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Left Panel: Messy RFP -->
+  <div class="panel">
+    <h2>Messy RFP Excerpt</h2>
+    <div class="rfp">
+      Proposals must be received by September 1, 2025, at 5:00 PM CST.
+      Vendors must provide SOC 2 Type II evidence current within the last 12 months.
+      Questions due August 25, 2025. The City reserves the right to reject any proposal.
+    </div>
+  </div>
+
+  <!-- Right Panel: Structured JSON Output -->
+  <div class="panel">
+    <h2>Structured Output</h2>
+    <pre>
+<span class="key">{
+  "<span class="string">client</span>"</span>: <span class="string">"City of Northland"</span>,
+  <span class="key">"<span class="string">due_date</span>"</span>: <span class="string">"2025-09-01T17:00:00-06:00"</span>,
+  <span class="key">"<span class="string">soc2_required</span>"</span>: <span class="boolean">true</span>,
+  <span class="key">"<span class="string">soc2_attached</span>"</span>: <span class="boolean">false</span>,
+  <span class="key">"<span class="string">urgent</span>"</span>: <span class="boolean">true</span>,
+  <span class="key">"<span class="string">blockers</span>"</span>: [
+    {
+      <span class="key">"<span class="string">name</span>"</span>: <span class="string">"SOC 2 Type II evidence"</span>,
+      <span class="key">"<span class="string">severity</span>"</span>: <span class="string">"blocking"</span>,
+      <span class="key">"<span class="string">notes</span>"</span>: <span class="string">"Required by RFP but not attached"</span>
+    }
+  ]
+}</pre>
+  </div>
+</div>
+</body>
+</html>
